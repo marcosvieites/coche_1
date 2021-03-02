@@ -61,6 +61,10 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.tranporte, function (sprite, otherSprite) {
+    tiles.placeOnRandomTile(otherSprite, sprites.builtin.brick)
+    info.changeLifeBy(10)
+})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     coche.setImage(img`
         . . . . . . . . . . . . . . . . 
@@ -82,6 +86,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         `)
 })
 let coche: Sprite = null
+info.setScore(0)
 coche = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . 2 2 2 2 2 2 2 2 . . . . 
@@ -123,3 +128,23 @@ let personaazul = sprites.create(img`
     . . . . . 8 . . . . 8 . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.tranporte)
+tiles.placeOnRandomTile(personaazul, sprites.builtin.brick)
+let personaroja = sprites.create(img`
+    . . . . 2 2 2 2 2 2 2 2 . . . . 
+    . . . . 2 . . . . . . 2 . . . . 
+    . . . . 2 . 2 . . 2 . 2 . . . . 
+    . . . . 2 . . . . . . 2 . . . . 
+    . . . . 2 . . 2 2 . . 2 . . . . 
+    . . . . 2 2 2 2 2 2 2 2 . . . . 
+    . . 2 . . . . 2 2 . . . . 2 . . 
+    . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . 2 2 2 2 . . . . . . 
+    . . . . . 2 2 2 2 2 2 . . . . . 
+    . . . . . 2 . . . . 2 . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.tranporte)
+tiles.placeOnRandomTile(personaroja, sprites.builtin.brick)
